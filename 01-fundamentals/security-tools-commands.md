@@ -47,10 +47,10 @@ Ping checks if a computer/server is **reachable** and **how fast** the connectio
 
 | Field | What It Means |
 |---|---|
-| Reply from 13.248.243.5 | The server responded — it's alive and reachable |
+| Reply from 13.248.243.5 | The server responded it's alive and reachable |
 | bytes=32 | Size of the ICMP packet sent |
-| time=22ms | Round-trip time — lower is faster |
-| TTL=244 | Time To Live — how many hops remain before packet dies |
+| time=22ms | Round-trip time lower is faster |
+| TTL=244 | Time To Live how many hops remain before packet dies |
 | Packets Lost = 0 | All packets came back — connection is healthy |
 
 ### What Bad Output Looks Like
@@ -90,8 +90,8 @@ Ping checks if a computer/server is **reachable** and **how fast** the connectio
 
 | Error | Meaning |
 |---|---|
-| Request timed out | Target didn't respond — could be down or firewall blocking |
-| Destination host unreachable | No route to that IP — network path doesn't exist |
+| Request timed out | Target didn't respond could be down or firewall blocking |
+| Destination host unreachable | No route to that IP network path doesn't exist |
 | TTL expired in transit | Packet bounced around too many routers and died |
 | General failure | Your own network adapter has a problem |
 
