@@ -631,5 +631,24 @@ What does this tell you?
 
 **Answer:** Traffic is being blocked after your gateway (10.0.5.1). Either a firewall rule is blocking it, the server is down, or there's a network issue between your subnet and the server's subnet. Check firewall rules and server status.
 
+
+---
+
+## Difference Between All 5 Tools
+
+| Feature | PING | IPCONFIG | NSLOOKUP | TRACERT | NETSTAT |
+|---|---|---|---|---|---|
+| What it does | Checks if a host is alive and reachable | Shows YOUR computer's network settings | Looks up DNS records (domain to IP) | Shows the path packets take to reach a destination | Shows all active connections on your machine |
+| Direction | Outbound (you to target) | Local only (checks your own config) | Outbound query (asks DNS server) | Outbound (you to target, hop by hop) | Inbound + Outbound (all connections) |
+| Protocol used | ICMP | N/A (reads local config) | DNS (UDP port 53) | ICMP (with increasing TTL) | TCP/UDP (reads connection table) |
+| Answers the question | "Is this host alive?" | "What is MY network identity?" | "What IP does this domain point to?" | "What path does my traffic take?" | "Who is my computer talking to right now?" |
+| Requires network? | Yes | No (works offline) | Yes (needs DNS server) | Yes | No (reads local state) |
+| Shows remote info? | Yes (target response time) | No (only local info) | Yes (remote DNS records) | Yes (every router in the path) | Yes (remote IPs connected to you) |
+| Common SOC use | Verify host is up/down after isolation | Check for DNS poisoning, rogue DHCP | Investigate phishing domains, verify DNS | Find where connection fails, detect rerouting | Find malware C2 connections, open ports |
+| Key output | Reply time (ms), packet loss % | IP address, subnet, gateway, DNS | Domain name to IP mapping | List of hops with latency | List of connections with state and PID |
+| Run as Admin? | No | No (except /release /renew) | No | No | Yes (for -b flag to see program names) |
+| Works on | Windows, Linux, Mac | Windows only (Linux uses ifconfig/ip) | Windows, Linux, Mac | Windows (Linux uses traceroute) | Windows, Linux, Mac |
+
+
 ---
 **Part of the [incident-response-playbook](https://github.com/mpramodsimha/incident-response-playbook) repository.**
